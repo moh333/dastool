@@ -1,33 +1,50 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue';
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+import { ZiggyVue } from 'ziggy';
+import { Ziggy } from './ziggy';
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+Vue.use(ZiggyVue, Ziggy);
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import * as Sentry from "@sentry/vue";
+import { Integrations } from "@sentry/tracing";
 
-const app = new Vue({
-    el: '#app'
+Sentry.init({
+    Vue,
+    dsn: process.env.MIX_SENTRY_VUE_DSN,
+    integrations: [new Integrations.BrowserTracing()],
+
+    // Set tracesSampleRate to 1.0 to capture 100%
+    // of transactions for performance monitoring.
+    // We recommend adjusting this value in production
+    tracesSampleRate: 0.0,
+    logErrors: true,
+});
+
+window.Sentry = Sentry
+
+Vue.prototype.$sentry = Sentry
+
+import { BootstrapVue, BIcon, BIconX } from 'bootstrap-vue'
+
+// Import Bootstrap an BootstrapVue CSS files (order is important)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+// Make BootstrapVue available throughout your project
+Vue.use(BootstrapVue)
+Vue.component('BIcon', BIcon)
+Vue.component('BIconX', BIconX)
+
+import DirectionsService from './plugins/directions-service'
+Vue.use(DirectionsService)
+
+
+Vue.config.productionTip = false
+
+new Vue({
+    el: '#app',
+    components: {  }
 });

@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CalculatorController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +13,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/ziggy', [CalculatorController::class, 'ziggy'])->name('ziggy.routes');
 
 Route::get('/clearcache185', function () {
     $clearcache = Artisan::call('cache:clear');
@@ -22,8 +27,7 @@ Route::get('/clearcache185', function () {
     echo "Config cleared<br>";
 });
 
-
-
-
-
+Route::get('/', function () {
+    return view('welcome');
+});
 

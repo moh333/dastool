@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="interline-dev" createEmptyFolders="true" exclude=".svn;.cvs;.idea;.DS_Store;.git;.hg;*.hprof;*.pyc;.env;node_modules;npm-packages-offline-cache" autoUploadExternalChanges="true">
+    <serverData>
+      <paths name="interline-dev">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/api/current" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/frontend/current" local="$PROJECT_DIR$/../frontend" web="" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/bootstrap/cache" />
+            <excludedPath local="true" path="$PROJECT_DIR$/storage" />
+            <excludedPath local="true" path="$PROJECT_DIR$/vendor" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

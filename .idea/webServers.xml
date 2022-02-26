@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="4a4d1316-5ce7-4ede-926a-0597d1f20ccd" name="interline-dev" url="https://interline.dev.dev-factory.de">
+        <fileTransfer rootFolder="/home/interline" accessType="SFTP" host="interline.dev.dev-factory.de" port="22" sshConfigId="b6c376ac-4b53-4710-b07f-3b4219ab7ba2" sshConfig="interline@interline.dev.dev-factory.de:22 agent" authAgent="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

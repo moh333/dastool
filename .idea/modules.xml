@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$USER_HOME$/Downloads/Message1592103144_Public-pages/.idea/Message1592103144_Public-pages.iml" filepath="$USER_HOME$/Downloads/Message1592103144_Public-pages/.idea/Message1592103144_Public-pages.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/calculator.iml" filepath="$PROJECT_DIR$/.idea/calculator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../frontend/.idea/frontend.iml" filepath="$PROJECT_DIR$/../frontend/.idea/frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../interline-frankfurt-admin/.idea/interline-frankfurt-admin.iml" filepath="$PROJECT_DIR$/../interline-frankfurt-admin/.idea/interline-frankfurt-admin.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/interline-frankfurt-update/.idea/interline-frankfurt-update.iml" filepath="$USER_HOME$/Downloads/interline-frankfurt-update/.idea/interline-frankfurt-update.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../interline-frankfurt.github.io/.idea/interline-frankfurt.github.io.iml" filepath="$PROJECT_DIR$/../interline-frankfurt.github.io/.idea/interline-frankfurt.github.io.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../website/.idea/website.iml" filepath="$PROJECT_DIR$/../website/.idea/website.iml" />
+    </modules>
+  </component>
+</project>

@@ -2,57 +2,62 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": [
-        "framework",
-        "laravel"
-    ],
+    "keywords": ["framework", "laravel"],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://www.phpclasses.org/"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/funkdoobiest/laravel-ip-middleware"
+        }
+    ],
     "require": {
-        "php": "^7.1.3",
-        "brozot/laravel-fcm": "^1.2",
-        "fideloper/proxy": "^4.0",
-        "intervention/image": "^2.4",
-        "laravel/framework": "5.8.*",
-        "laravel/passport": "7.5.1",
-        "laravel/socialite": "^4.1",
-        "laravel/tinker": "^1.0",
-        "laravelcollective/html": "^5.8",
-        "pusher/pusher-php-server": "^3.4"
+        "php": "^8.0",
+        "appstract/laravel-opcache": "^4.0",
+        "doctrine/dbal": "^3.1",
+        "fideloper/proxy": "^4.4",
+        "freshbitsweb/laravel-log-enhancer": "^1.3",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/fortify": "^1.7",
+        "laravel/framework": "^8.40",
+        "laravel/sanctum": "^2.11",
+        "laravel/tinker": "^2.5",
+        "orangehill/iseed": "^3.0",
+        "orkhanahmadov/laravel-ip-middleware": "dev-develop",
+        "phpclasses/stateinfo": ">=1.0.0",
+        "sentry/sentry-laravel": "^2.6",
+        "spatie/browsershot": "^3.50",
+        "spatie/geocoder": "^3.10",
+        "spatie/laravel-permission": "^5.5",
+        "spatie/period": "^2.1",
+        "tightenco/ziggy": "^1.3"
     },
     "require-dev": {
-        "beyondcode/laravel-dump-server": "^1.0",
-        "filp/whoops": "^2.0",
-        "fzaninotto/faker": "^1.4",
-        "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^7.5"
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
+        "barryvdh/laravel-ide-helper": "^2.10",
+        "facade/ignition": "^2.5",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/sail": "^1.0.1",
+        "laravel/telescope": "^4.6",
+        "mockery/mockery": "^1.4.2",
+        "nunomaduro/collision": "^5.0",
+        "phpunit/phpunit": "^9.3.3"
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
-        },
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ]
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
@@ -63,6 +68,28 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ]
-    }
+        ],
+      "post-update-cmd": [
+        "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+        "[ $COMPOSER_DEV_MODE -eq 1 ] && php artisan ide-helper:generate",
+        "[ $COMPOSER_DEV_MODE -eq 1 ] && php artisan ide-helper:meta",
+        "[ $COMPOSER_DEV_MODE -eq 1 ] && php artisan ide-helper:models --write-mixin",
+         "@php artisan telescope:publish --ansi"
+      ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+                "barryvdh/laravel-ide-helper",
+                "laravel/telescope"
+            ]
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

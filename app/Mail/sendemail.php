@@ -18,17 +18,21 @@ class sendemail extends Mailable
     /**
      * @var Request
      */
-    public $email;
+    public $email; // to
+    public $myemail; // from
     public $mytemplate;
+    public $subject;
     /**
      * SendContact constructor.
      *
      * @param Request $request
      */
-    public function __construct($email,$mytemplate)
+    public function __construct($email,$myemail,$subject,$mytemplate)
     {
         $this->email        = $email;
+        $this->myemail      = $myemail;
         $this->mytemplate   = $mytemplate;
+        $this->subject      = $subject;
     }
 
     /**
@@ -38,11 +42,10 @@ class sendemail extends Mailable
      */
     public function build()
     {
-        $myemail     = setting::value('email');
         return $this->to($this->email)
             ->view('mail.sendemail')
-            ->subject('KoraStation')
-            ->from($myemail,'Kora Station')
+            ->subject($this->subject)
+            ->from($this->myemail,$this->subject)
             ->replyTo($this->email);
     }
 }
