@@ -9,6 +9,7 @@ use App\Http\Controllers\API\TaskController;
 use App\Http\Controllers\API\AssignmentController;
 use App\Http\Controllers\API\WalletController;
 use App\Http\Controllers\API\EmailController;
+use App\Http\Controllers\API\DashboardController;
 
 
 /*
@@ -24,13 +25,15 @@ use App\Http\Controllers\API\EmailController;
 
 Route::get('/ziggy', [CalculatorController::class, 'ziggy'])->name('ziggy.routes');
 
-
 Route::group(['prefix' => 'v2'], function () {
 
     Route::post('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/login', [AuthController::class, 'login'])->name('login');
    
     Route::middleware('auth:sanctum')->group( function () {
+
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('boards.index');
+
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
         Route::post('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -55,7 +58,11 @@ Route::group(['prefix' => 'v2'], function () {
         Route::post('/wallets/update/{id}', [WalletController::class, 'update'])->name('wallets.update');
         Route::post('/wallets/delete/{id}', [WalletController::class, 'destroy'])->name('wallets.delete');
 
+        Route::get('/emails', [EmailController::class, 'index'])->name('emails.index');
         Route::post('/emails/send', [EmailController::class, 'store'])->name('emails.send');
+        Route::post('/emails/readed/{id}', [EmailController::class, 'readed'])->name('emails.readed');
+        Route::post('/emails/archieved/{id}', [EmailController::class, 'archieved'])->name('emails.archieved');
+        Route::post('/emails/delete/{id}', [EmailController::class, 'destroy'])->name('emails.delete');
         
     });
 });
