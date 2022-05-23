@@ -10,6 +10,8 @@ use App\Http\Controllers\API\AssignmentController;
 use App\Http\Controllers\API\WalletController;
 use App\Http\Controllers\API\EmailController;
 use App\Http\Controllers\API\DashboardController;
+use App\Http\Controllers\API\ContactController;
+use App\Http\Controllers\API\AppointmentController;
 
 
 /*
@@ -63,6 +65,17 @@ Route::group(['prefix' => 'v2'], function () {
         Route::post('/emails/readed/{id}', [EmailController::class, 'readed'])->name('emails.readed');
         Route::post('/emails/archieved/{id}', [EmailController::class, 'archieved'])->name('emails.archieved');
         Route::post('/emails/delete/{id}', [EmailController::class, 'destroy'])->name('emails.delete');
+
+
+        Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+        Route::post('/contacts/add', [ContactController::class, 'store'])->name('contacts.add');
+        Route::post('/contacts/update/{id}', [ContactController::class, 'update'])->name('contacts.update');
+        Route::post('/contacts/delete/{id}', [ContactController::class, 'destroy'])->name('contacts.delete');
+
+        Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+        Route::post('/appointments/add', [AppointmentController::class, 'store'])->name('appointments.add');
+        Route::post('/appointments/update/{id}', [AppointmentController::class, 'update'])->name('appointments.update');
+        Route::post('/appointments/delete/{id}', [AppointmentController::class, 'destroy'])->name('appointments.delete');
         
     });
 });
